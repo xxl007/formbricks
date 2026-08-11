@@ -42,6 +42,12 @@ ARG TARGETARCH
 ARG BASE_PATH=""
 ENV BASE_PATH=${BASE_PATH}
 
+# Holostaff copilot voice (optional, build-time opt-in). "1" relaxes the
+# microphone Permissions-Policy and allows same-origin blob workers on app
+# routes so the copilot can hold a voice conversation. See next.config.mjs.
+ARG HOLOSTAFF_VOICE=""
+ENV HOLOSTAFF_VOICE=${HOLOSTAFF_VOICE}
+
 # Set the working directory
 WORKDIR /app
 

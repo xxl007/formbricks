@@ -301,6 +301,7 @@
         "FORMBRICKS_APP_URL",
         "HOLOSTAFF_TENANT_ID",
         "HOLOSTAFF_SOURCE_ID",
+        "HOLOSTAFF_VOICE",
         "LOG_LEVEL",
         "MAIL_FROM",
         "MAIL_FROM_NAME",

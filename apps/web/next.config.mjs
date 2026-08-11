@@ -191,6 +191,16 @@ const nextConfig = {
 
     const cspBase = `default-src 'self'; script-src 'self' 'unsafe-inline'${scriptSrcUnsafeEval} https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' blob: data:${devLoopbackSourceList} https:; font-src 'self' data: https:; connect-src 'self'${devLoopbackSourceList} https: wss:; frame-src 'self' https://app.cal.com https:; media-src 'self' https:; object-src 'self' data: https:; base-uri 'self'; form-action 'self'`;
 
+    // Holostaff voice (build-time opt-in, HOLOSTAFF_VOICE=1): the copilot's
+    // voice conversation needs the microphone and a same-origin blob worker.
+    // Both stay locked down unless an operator opts in at build time, and
+    // survey routes (/s, /c) keep the base policy either way.
+    const holostaffVoice = process.env.HOLOSTAFF_VOICE === "1";
+    const appCsp = holostaffVoice ? `${cspBase}; worker-src 'self' blob:` : cspBase;
+    const permissionsPolicy = holostaffVoice
+      ? "camera=(), microphone=(self), geolocation=()"
+      : "camera=(), microphone=(), geolocation=()";
+
     return [
       {
         // Apply X-Frame-Options and restricted frame-ancestors to all routes except those starting with /s/ or /c/
@@ -202,7 +212,7 @@ const nextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: `${cspBase}; frame-ancestors 'self'`,
+            value: `${appCsp}; frame-ancestors 'self'`,
           },
         ],
       },
@@ -262,7 +272,7 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value: permissionsPolicy,
           },
         ],
       },

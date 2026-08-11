@@ -127,6 +127,7 @@
     "jotai": "2.20.0",
     "jsonwebtoken": "9.0.3",
     "lexical": "0.41.0",
+    "livekit-client": "2.21.0",
     "lucide-react": "0.577.0",
     "markdown-it": "14.2.0",
     "mcp-handler": "1.1.0",
