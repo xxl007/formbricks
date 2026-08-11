@@ -278,6 +278,10 @@ const parsedEnv = createEnv({
     FORMBRICKS_WORKSPACE_ID: z.string().optional(),
     FORMBRICKS_APP_URL: z.url().optional(),
     IS_FORMBRICKS_CLOUD: z.enum(["1", "0"]).optional(),
+    // Holostaff (optional in-app copilot for survey creators). The copilot only
+    // mounts when both ids are set; leave unset to keep it off.
+    HOLOSTAFF_TENANT_ID: z.string().optional(),
+    HOLOSTAFF_SOURCE_ID: z.string().optional(),
     POSTHOG_KEY: z.string().optional(),
     LOG_LEVEL: z.enum(["debug", "info", "warn", "error", "fatal"]).optional(),
     MAIL_FROM: z.email().optional(),
@@ -461,6 +465,8 @@ const parsedEnv = createEnv({
     PLAIN_CHAT_HMAC_SECRET: process.env.PLAIN_CHAT_HMAC_SECRET,
     PLAIN_ACTIVE_CUSTOMER_LABEL_TYPE_ID: process.env.PLAIN_ACTIVE_CUSTOMER_LABEL_TYPE_ID,
     FORMBRICKS_WORKSPACE_ID: process.env.FORMBRICKS_WORKSPACE_ID,
+    HOLOSTAFF_TENANT_ID: process.env.HOLOSTAFF_TENANT_ID,
+    HOLOSTAFF_SOURCE_ID: process.env.HOLOSTAFF_SOURCE_ID,
     FORMBRICKS_APP_URL: process.env.FORMBRICKS_APP_URL,
     IS_FORMBRICKS_CLOUD: process.env.IS_FORMBRICKS_CLOUD,
     POSTHOG_KEY: process.env.POSTHOG_KEY,

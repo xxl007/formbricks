@@ -232,6 +232,12 @@ export const IS_FORMBRICKS_SURVEYS_CONFIGURED = Boolean(env.FORMBRICKS_WORKSPACE
 
 export const POSTHOG_KEY = env.POSTHOG_KEY;
 
+// Holostaff: optional in-app copilot for survey creators. Only mounts when
+// both ids are set.
+export const HOLOSTAFF_TENANT_ID = env.HOLOSTAFF_TENANT_ID;
+export const HOLOSTAFF_SOURCE_ID = env.HOLOSTAFF_SOURCE_ID;
+export const IS_HOLOSTAFF_CONFIGURED = Boolean(env.HOLOSTAFF_TENANT_ID && env.HOLOSTAFF_SOURCE_ID);
+
 export const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY;
 export const TURNSTILE_SITE_KEY = env.TURNSTILE_SITE_KEY;
 export const IS_TURNSTILE_CONFIGURED = Boolean(env.TURNSTILE_SITE_KEY && TURNSTILE_SECRET_KEY);

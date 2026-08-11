@@ -48,6 +48,7 @@
     "@formbricks/types": "workspace:*",
     "@formbricks/workflows": "workspace:*",
     "@formkit/auto-animate": "0.9.0",
+    "@holostaff/sdk": "0.10.9",
     "@hookform/resolvers": "5.2.2",
     "@json2csv/node": "7.0.6",
     "@lexical/code": "0.41.0",

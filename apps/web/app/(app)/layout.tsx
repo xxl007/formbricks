@@ -1,4 +1,5 @@
 import { FormbricksProvider } from "@/app/formbricks/components/formbricks-provider";
+import { HolostaffProvider } from "@/app/holostaff/components/holostaff-provider";
 import { PlainChat } from "@/app/plain/components/plain-chat";
 import { getIsActiveCustomer } from "@/app/plain/lib/customer";
 import { computePlainEmailHash } from "@/app/plain/lib/identity";
@@ -6,6 +7,8 @@ import { PostHogIdentify } from "@/app/posthog/PostHogIdentify";
 import {
   FORMBRICKS_APP_URL,
   FORMBRICKS_WORKSPACE_ID,
+  HOLOSTAFF_SOURCE_ID,
+  HOLOSTAFF_TENANT_ID,
   IS_FORMBRICKS_SURVEYS_CONFIGURED,
   IS_PLAIN_CHAT_CONFIGURED,
   PLAIN_ACTIVE_CUSTOMER_LABEL_TYPE_ID,
@@ -61,6 +64,9 @@ const AppLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) 
           userEmail={user?.email}
           userName={user?.name}
         />
+      )}
+      {HOLOSTAFF_TENANT_ID && HOLOSTAFF_SOURCE_ID && (
+        <HolostaffProvider tenantId={HOLOSTAFF_TENANT_ID} sourceId={HOLOSTAFF_SOURCE_ID} />
       )}
       <ToasterClient />
       {children}
